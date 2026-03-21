@@ -1,0 +1,142 @@
+/* =============================================
+   BASE — Reset, variables, typography, layout
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --bg:        #0a0e1a;
+  --bg2:       #0f1625;
+  --bg3:       #141d2f;
+  --bg4:       #1c2740;
+  --cyan:      #0dd9ff;
+  --purple:    #7c3aed;
+  --green:     #10b981;
+  --red:       #ef4444;
+  --amber:     #f59e0b;
+  --text:      #e2e8f0;
+  --text2:     #9ba5b5;
+  --text3:     #576a7f;
+  --border:    rgba(255,255,255,0.08);
+  --font:      'Syne', sans-serif;
+  --mono:      'JetBrains Mono', monospace;
+  --sidebar-w: 228px;
+  --topbar-h:  58px;
+  --radius:    12px;
+  --radius-sm: 8px;
+  --radius-xs: 6px;
+  
+  /* Card tokens */
+  --card-bg:      var(--bg2);
+  --card-border:  var(--border);
+  --card-padding: 20px;
+  --card-radius:  var(--radius);
+  
+  /* Professional spacing scale */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Ambient glow background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 900px 700px at 10% 20%, rgba(124,58,237,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 700px 500px at 90% 80%, rgba(0,212,255,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 500px 350px at 65% 5%,  rgba(16,185,129,0.04) 0%, transparent 65%);
+}
+
+/* ── MAIN LAYOUT ── */
+#main-wrap {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── CONTENT SCROLL AREA ── */
+#content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 28px 40px;
+}
+#content::-webkit-scrollbar       { width: 6px; }
+#content::-webkit-scrollbar-track  { background: transparent; }
+#content::-webkit-scrollbar-thumb  { 
+  background: rgba(255,255,255,0.08); 
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+#content::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.12); }
+
+/* ── PANELS ── */
+.panel       { display: none; animation: fadeUp 0.22s ease; }
+.panel.active{ display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── GRID HELPERS ── */
+.grid-2   { display: grid; grid-template-columns: 1fr 1fr; }
+.grid-3   { display: grid; grid-template-columns: repeat(3, 1fr); }
+.grid-4   { display: grid; grid-template-columns: repeat(4, 1fr); }
+.grid-5-7 { display: grid; grid-template-columns: 5fr 7fr; }
+.grid-3-7 { display: grid; grid-template-columns: 3fr 7fr; }
+.gap-16   { gap: 16px; }
+.gap-14   { gap: 14px; }
+
+/* ── SPACING ── */
+.mb-0  { margin-bottom: 0 !important; }
+.mb-8  { margin-bottom: 8px; }
+.mb-12 { margin-bottom: 12px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-20 { margin-bottom: 20px; }
+.mt-12 { margin-top: 12px; }
+
+/* Additional spacing utilities */
+.px-16 { padding-left: 16px; padding-right: 16px; }
+.py-12 { padding-top: 12px; padding-bottom: 12px; }
+
+/* ── COLOR UTILITIES ── */
+.cyan-text   { color: var(--cyan); }
+.purple-text { color: var(--purple); }
+.green-text  { color: var(--green); }
+.red-text    { color: var(--red); }
+.amber-text  { color: var(--amber); }
+.muted-text  { color: var(--text2); }
+
+/* ── ANIMATIONS ── */
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:.55; transform:scale(.82); }
+}
+@keyframes glowPulse {
+  0%,100% { box-shadow: 0 0 6px currentColor; }
+  50%      { box-shadow: 0 0 14px currentColor; }
+}

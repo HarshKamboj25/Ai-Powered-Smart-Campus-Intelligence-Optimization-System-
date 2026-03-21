@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartCampus AI</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/sidebar.css" />
+  <link rel="stylesheet" href="css/topbar.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/panels.css" />
+</head>
+<body>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║         SIDEBAR              ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <nav id="sidebar">
+    <div class="logo-block">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <div>
+        <h1>SmartCampus AI</h1>
+        <p>Resource Optimizer</p>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <div class="nav-group-label">Main</div>
+
+      <a class="nav-item active" data-panel="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+        </svg>
+        Dashboard
+      </a>
+
+      <a class="nav-item" data-panel="energy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+        Energy Analytics
+      </a>
+
+      <a class="nav-item" data-panel="rooms">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Room Management
+      </a>
+
+      <a class="nav-item" data-panel="booking">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Smart Booking
+      </a>
+
+      <div class="nav-group-label" style="margin-top:12px">Intelligence</div>
+
+      <a class="nav-item" data-panel="aiinsights">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+        </svg>
+        AI Insights
+      </a>
+
+      <a class="nav-item" data-panel="alerts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 01-3.46 0"/>
+        </svg>
+        Alerts
+        <span class="nav-badge" id="nav-badge">4</span>
+      </a>
+
+      <a class="nav-item" data-panel="reports">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="20" x2="18" y2="10"/>
+          <line x1="12" y1="20" x2="12" y2="4"/>
+          <line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+        Reports
+      </a>
+
+      <div class="nav-group-label" style="margin-top:12px">System</div>
+
+      <a class="nav-item" data-panel="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+        </svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="user-block">
+      <div class="user-avatar">AD</div>
+      <div class="user-info">
+        <strong>Admin User</strong>
+        <span>System Admin</span>
+      </div>
+      <div class="online-dot"></div>
+    </div>
+  </nav>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║           MAIN               ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <div id="main-wrap">
+
+    <!-- TOPBAR -->
+    <header id="topbar">
+      <h2 id="page-title">Dashboard</h2>
+      <div class="topbar-right">
+        <div class="live-badge">
+          <span class="live-dot"></span> LIVE
+        </div>
+        <div class="clock" id="clock">00:00:00</div>
+        <button class="icon-btn" onclick="switchPanel('alerts')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 01-3.46 0"/>
+          </svg>
+          <span class="icon-btn-dot"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- PANELS WRAPPER -->
+    <div id="content">
+
+      <!-- ════════════════════════════
+           DASHBOARD
+      ════════════════════════════ -->
+      <section class="panel active" id="panel-dashboard">
+        <div class="section-header">
+          <div>
+            <h2>Campus <span>Overview</span></h2>
+            <p class="subtitle">Live monitoring · All systems operational</p>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-cyan" onclick="refreshDashboard()">↻ Refresh</button>
+            <button class="btn btn-purple" onclick="switchPanel('reports')">↗ Reports</button>
+          </div>
+        </div>
+
+        <!-- STAT CARDS -->
+        <div class="grid-4 gap-16 mb-16">
+          <div class="card glow-cyan">
+            <div class="stat-card">
+              <div class="stat-icon cyan-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="stat-badge green-badge">↓12%</div>
+            </div>
+            <div class="stat-number cyan-text" id="live-energy">284 <span class="stat-unit">kWh</span></div>
+            <div class="stat-label">Today's Energy Usage</div>
+            <div class="stat-change green-text">↓ 12% vs yesterday</div>
+          </div>
+
+          <div class="card glow-green">
+            <div class="stat-card">
+              <div class="stat-icon green-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              </div>
+              <div class="stat-badge amber-badge">68%</div>
+            </div>
+            <div class="stat-number green-text">34 <span class="stat-unit">/ 50</span></div>
+            <div class="stat-label">Rooms Occupied</div>
+            <div class="stat-change amber-text">68% utilization rate</div>
+          </div>
+
+          <div class="card glow-purple">
+            <div class="stat-card">
+              <div class="stat-icon purple-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div class="stat-badge green-badge">+8</div>
+            </div>
+            <div class="stat-number purple-text">23</div>
+            <div class="stat-label">Bookings Today</div>
+            <div class="stat-change green-text">+8 from yesterday</div>
+          </div>
+
+          <div class="card glow-red">
+            <div class="stat-card">
+              <div class="stat-icon red-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="stat-badge red-badge">LIVE</div>
+            </div>
+            <div class="stat-number red-text">4</div>
+            <div class="stat-label">Active Anomalies</div>
+            <div class="stat-change red-text">Requires attention</div>
+          </div>
+        </div>
+
+        <!-- ENERGY DIAL + CHART -->
+        <div class="grid-5-7 gap-16 mb-16">
+          <div class="card glow-cyan">
+            <div class="chart-label">Energy · Today</div>
+            <div class="dial-center">
+              <svg width="170" height="170" viewBox="0 0 170 170">
+                <defs>
+                  <linearGradient id="dialGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#7c3aed"/>
+                    <stop offset="100%" stop-color="#00d4ff"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="85" cy="85" r="70" fill="none" stroke="rgba(0,212,255,0.08)" stroke-width="12"/>
+                <circle cx="85" cy="85" r="70" fill="none" stroke="url(#dialGrad)"
+                  stroke-width="12" stroke-linecap="round"
+                  stroke-dasharray="439" stroke-dashoffset="120"
+                  transform="rotate(-90 85 85)"/>
+                <text x="85" y="78" text-anchor="middle" font-size="28" font-weight="800"
+                  fill="#00d4ff" font-family="monospace">284</text>
+                <text x="85" y="96" text-anchor="middle" font-size="11"
+                  fill="#64748b" font-family="sans-serif">kWh today</text>
+                <text x="85" y="112" text-anchor="middle" font-size="10"
+                  fill="#64748b" font-family="sans-serif">67% of target</text>
+              </svg>
+            </div>
+            <div class="mini-grid">
+              <div class="mini-box">
+                <div class="mini-val green-text">₹1,840</div>
+                <div class="mini-lbl">Saved today</div>
+              </div>
+              <div class="mini-box">
+                <div class="mini-val amber-text">67%</div>
+                <div class="mini-lbl">Target used</div>
+              </div>
+            </div>
+          </div>
+          <div class="card glow-cyan">
+            <div class="chart-label">Hourly Energy Usage · kWh</div>
+            <div class="chart-box"><canvas id="chart-dash-energy"></canvas></div>
+          </div>
+        </div>
+
+        <!-- ROOM DONUT + AI RECS -->
+        <div class="grid-2 gap-16 mb-16">
+          <div class="card">
+            <div class="chart-label">Room Utilization</div>
+            <div class="chart-box-sm"><canvas id="chart-dash-rooms"></canvas></div>
+            <div class="room-count-row">
+              <div class="room-count red-bg"><div class="rc-num red-text">34</div><div class="rc-lbl">Occupied</div></div>
+              <div class="room-count green-bg"><div class="rc-num green-text">11</div><div class="rc-lbl">Available</div></div>
+              <div class="room-count amber-bg"><div class="rc-num amber-text">5</div><div class="rc-lbl">Underused</div></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header-row">
+              <div class="chart-label mb-0">🤖 AI Recommendations</div>
+              <span class="live-tag">LIVE</span>
+            </div>
+            <div class="insight-list">
+              <div class="insight-item">
+                <div class="insight-icon red-bg-soft">⚡</div>
+                <div>
+                  <div class="insight-title">AC waste – B-101</div>
+                  <div class="insight-desc">Empty 2h, AC running. Save ~₹420/day</div>
+                  <span class="tag tag-high">HIGH</span>
+                </div>
+              </div>
+              <div class="insight-item">
+                <div class="insight-icon cyan-bg-soft">📅</div>
+                <div>
+                  <div class="insight-title">Merge labs A-201 &amp; A-202</div>
+                  <div class="insight-desc">Both under 30% occupancy this week</div>
+                  <span class="tag tag-med">MEDIUM</span>
+                </div>
+              </div>
+              <div class="insight-item">
+                <div class="insight-icon green-bg-soft">🌙</div>
+                <div>
+                  <div class="insight-title">Night mode active</div>
+                  <div class="insight-desc">14 rooms dimmed. 18% extra savings</div>
+                  <span class="tag tag-low">INFO</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ANOMALIES + WEEKLY -->
+        <div class="grid-2 gap-16">
+          <div class="card glow-red">
+            <div class="card-header-row">
+              <div class="chart-label mb-0">🚨 Live Anomalies</div>
+              <span class="alert-tag">ALERT</span>
+            </div>
+            <div class="anomaly-list">
+              <div class="anomaly-item"><div class="pulse-dot red-dot"></div><div class="an-room">B-101</div><div class="an-desc">AC on — empty 2h+</div><div class="an-val red-text">+4.2kW</div></div>
+              <div class="anomaly-item"><div class="pulse-dot amber-dot"></div><div class="an-room">C-305</div><div class="an-desc">Energy spike</div><div class="an-val amber-text">+2.8kW</div></div>
+              <div class="anomaly-item"><div class="pulse-dot amber-dot"></div><div class="an-room">D-Lab2</div><div class="an-desc">Lights on, empty</div><div class="an-val amber-text">+0.6kW</div></div>
+              <div class="anomaly-item"><div class="pulse-dot red-dot"></div><div class="an-room">E-201</div><div class="an-desc">Night usage spike</div><div class="an-val red-text">+1.9kW</div></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="chart-label">Weekly Energy Trend · kWh</div>
+            <div class="chart-box"><canvas id="chart-dash-weekly"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════
+           ENERGY ANALYTICS
+      ════════════════════════════ -->
+      <section class="panel" id="panel-energy">
+        <div class="section-header">
+          <div>
+            <h2>Energy <span>Analytics</span></h2>
+            <p class="subtitle">Deep-dive into campus energy patterns &amp; AI predictions</p>
+          </div>
+          <div class="btn-group">
+            <select class="select-input"><option>This Week</option><option>This Month</option><option>This Year</option></select>
+            <button class="btn btn-cyan">⬇ Export CSV</button>
+          </div>
+        </div>
+
+        <div class="grid-4 gap-16 mb-16">
+          <div class="card glow-cyan"><div class="stat-icon-sm cyan-icon mb-8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="stat-number cyan-text">1,842</div><div class="stat-label">kWh This Week</div><div class="stat-change green-text">↓ 8.4% vs last</div></div>
+          <div class="card"><div class="stat-icon-sm green-icon mb-8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="stat-number green-text">₹12,460</div><div class="stat-label">Cost Saved</div><div class="stat-change green-text">Smart scheduling</div></div>
+          <div class="card"><div class="stat-icon-sm amber-icon mb-8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="stat-number amber-text">2–4 PM</div><div class="stat-label">Peak Hours</div><div class="stat-change amber-text">AI predicted</div></div>
+          <div class="card"><div class="stat-icon-sm purple-icon mb-8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="stat-number purple-text">94.2%</div><div class="stat-label">AI Accuracy</div><div class="stat-change green-text">Regression model</div></div>
+        </div>
+
+        <div class="grid-2 gap-16 mb-16">
+          <div class="card glow-cyan"><div class="chart-label">24-Hour Energy Profile · kWh</div><div class="chart-box"><canvas id="chart-en-hour"></canvas></div></div>
+          <div class="card glow-purple"><div class="chart-label">AI Prediction vs Actual · This Week</div><div class="chart-box"><canvas id="chart-en-pred"></canvas></div></div>
+        </div>
+
+        <div class="grid-3 gap-16 mb-16">
+          <div class="card glow-green"><div class="chart-label">Building A</div><div class="chart-box-sm"><canvas id="chart-bldgA"></canvas></div></div>
+          <div class="card"><div class="chart-label">Building B</div><div class="chart-box-sm"><canvas id="chart-bldgB"></canvas></div></div>
+          <div class="card"><div class="chart-label">Building C</div><div class="chart-box-sm"><canvas id="chart-bldgC"></canvas></div></div>
+        </div>
+
+        <div class="card">
+          <div class="chart-label">Usage Heatmap – Rooms × Hours</div>
+          <div id="heatmap" class="heatmap-grid"></div>
+          <div class="heatmap-legend">
+            <span class="legend-text">Low</span>
+            <div class="legend-bar">
+              <div style="background:rgba(0,212,255,0.08)"></div>
+              <div style="background:rgba(0,212,255,0.22)"></div>
+              <div style="background:rgba(0,212,255,0.42)"></div>
+              <div style="background:rgba(0,212,255,0.65)"></div>
+              <div style="background:rgba(0,212,255,0.88)"></div>
+            </div>
+            <span class="legend-text">High</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════
+           ROOM MANAGEMENT
+      ════════════════════════════ -->
+      <section class="panel" id="panel-rooms">
+        <div class="section-header">
+          <div>
+            <h2>Room <span>Management</span></h2>
+            <p class="subtitle">Real-time occupancy · Click green rooms to book instantly</p>
+          </div>
+          <button class="btn btn-cyan" onclick="switchPanel('booking')">+ Book a Room</button>
+        </div>
+
+        <div class="grid-4 gap-16 mb-16">
+          <div class="card"><div class="stat-number red-text">34</div><div class="stat-label">Occupied</div></div>
+          <div class="card"><div class="stat-number green-text">11</div><div class="stat-label">Available</div></div>
+          <div class="card"><div class="stat-number amber-text">5</div><div class="stat-label">Underutilized</div></div>
+          <div class="card"><div class="stat-number muted-text">2</div><div class="stat-label">Maintenance</div></div>
+        </div>
+
+        <div class="room-legend mb-16">
+          <span><i class="dot red-dot-sm"></i> Occupied</span>
+          <span><i class="dot green-dot-sm"></i> Available (click to book)</span>
+          <span><i class="dot amber-dot-sm"></i> Underutilized</span>
+          <span><i class="dot muted-dot-sm"></i> Maintenance</span>
+        </div>
+
+        <div class="grid-2 gap-16 mb-16">
+          <div class="card"><div class="chart-label">Block A – Floor Map</div><div class="room-grid" id="roomgrid-A"></div></div>
+          <div class="card"><div class="chart-label">Block B – Floor Map</div><div class="room-grid" id="roomgrid-B"></div></div>
+        </div>
+        <div class="grid-2 gap-16">
+          <div class="card"><div class="chart-label">Block C – Floor Map</div><div class="room-grid" id="roomgrid-C"></div></div>
+          <div class="card glow-cyan"><div class="chart-label">Occupancy Trend · 7-Day (%)</div><div class="chart-box"><canvas id="chart-occ"></canvas></div></div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════
+           SMART BOOKING
+      ════════════════════════════ -->
+      <section class="panel" id="panel-booking">
+        <div class="section-header">
+          <div>
+            <h2>Smart <span>Booking</span></h2>
+            <p class="subtitle">AI-powered classroom booking for teachers &amp; staff</p>
+          </div>
+        </div>
+
+        <div class="grid-3-7 gap-16">
+          <div class="booking-left">
+            <div class="card glow-purple mb-16">
+              <div class="ai-suggest-header">
+                <div class="ai-icon-box">🤖</div>
+                <div class="chart-label mb-0">AI Best Match</div>
+              </div>
+              <div class="ai-suggest-box">
+                <div class="ai-suggest-label">94% CONFIDENCE · BEST FIT</div>
+                <div class="ai-suggest-room">Room A-203</div>
+                <div class="ai-suggest-sub">Floor 2 · Block A · 60 seats</div>
+                <div class="ai-why">
+                  <div class="ai-why-label">Why this room?</div>
+                  <div class="ai-why-text">Unused at 2 PM · AC pre-conditioned · Near last booking · High energy score</div>
+                </div>
+                <button class="btn btn-purple btn-full mt-12" onclick="openModal('A-203','60','Floor 2')">Book A-203 Now →</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="chart-label">Filters</div>
+              <div class="filter-group">
+                <label class="filter-label">Time Slot</label>
+                <select class="select-input select-full">
+                  <option>2:00 PM – 4:00 PM</option><option>9:00 AM – 11:00 AM</option>
+                  <option>11:00 AM – 1:00 PM</option><option>4:00 PM – 6:00 PM</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">Capacity</label>
+                <select class="select-input select-full">
+                  <option>Any</option><option>≤ 30 seats</option><option>30–60 seats</option><option>60+ seats</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">Building</label>
+                <select class="select-input select-full">
+                  <option>All Buildings</option><option>Block A</option><option>Block B</option><option>Block C</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header-row mb-16">
+              <div class="chart-label mb-0">Available Rooms</div>
+              <span class="muted-text" style="font-size:11px">5 rooms free at 2 PM</span>
+            </div>
+            <div id="booking-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════
+           AI INSIGHTS
+      ════════════════════════════ -->
+      <section class="panel" id="panel-aiinsights">
+        <div class="section-header">
+          <div>
+            <h2>AI <span>Insights</span></h2>
+            <p class="subtitle">Machine learning models powering SmartCampus decisions</p>
+          </div>
+        </div>
+
+        <div class="ai-modules-grid mb-16">
+          <div class="ai-module ai-module-cyan">
+            <div class="ai-module-type cyan-text">Regression</div>
+            <div class="ai-module-name">Energy Prediction</div>
+            <div class="ai-module-desc">Linear regression on 2 years of campus data. Predicts hourly consumption based on schedule, weather &amp; occupancy.</div>
+            <div class="ai-module-acc cyan-text">94.2% <span class="acc-unit">accuracy</span></div>
+            <div class="progress-bar"><div class="progress-fill cyan-fill" style="width:94%"></div></div>
+          </div>
+          <div class="ai-module ai-module-purple">
+            <div class="ai-module-type purple-text">K-Means Clustering</div>
+            <div class="ai-module-name">Room Usage Analysis</div>
+            <div class="ai-module-desc">Groups rooms by usage patterns. Identifies underutilized clusters and recommends consolidation for energy savings.</div>
+            <div class="ai-module-acc purple-text">89.7% <span class="acc-unit">precision</span></div>
+            <div class="progress-bar"><div class="progress-fill purple-fill" style="width:90%"></div></div>
+          </div>
+          <div class="ai-module ai-module-green">
+            <div class="ai-module-type green-text">Random Forest</div>
+            <div class="ai-module-name">Occupancy Detection</div>
+            <div class="ai-module-desc">Classifies room occupancy from schedule + sensor data. Powers real-time status updates across all 50 campus rooms.</div>
+            <div class="ai-module-acc green-text">97.1% <span class="acc-unit">F1 score</span></div>
+            <div class="progress-bar"><div class="progress-fill green-fill" style="width:97%"></div></div>
+          </div>
+          <div class="ai-module ai-module-amber">
+            <div class="ai-module-type amber-text">Isolation Forest</div>
+            <div class="ai-module-name">Fault Detection</div>
+            <div class="ai-module-desc">Detects abnormal energy spikes, appliance faults &amp; unauthorized usage. Sends instant alerts to campus admins.</div>
+            <div class="ai-module-acc amber-text">91.4% <span class="acc-unit">recall</span></div>
+            <div class="progress-bar"><div class="progress-fill amber-fill" style="width:91%"></div></div>
+          </div>
+        </div>
+
+        <div class="grid-2 gap-16">
+          <div class="card">
+            <div class="chart-label">Model Accuracy Over Weeks (%)</div>
+            <div class="chart-box"><canvas id="chart-ai-perf"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="chart-label">Top Recommendations · Today</div>
+            <div class="insight-list">
+              <div class="insight-item"><div class="insight-icon red-bg-soft">⚡</div><div><div class="insight-title">Turn off AC – Block B Rooms 101–106</div><div class="insight-desc">All 6 empty after 6 PM. Saving: ₹2,200/night</div><span class="tag tag-high">HIGH</span></div></div>
+              <div class="insight-item"><div class="insight-icon cyan-bg-soft">📊</div><div><div class="insight-title">Reallocate CS-401 lecture</div><div class="insight-desc">Only 18/80 students attending. Move to Lab-3</div><span class="tag tag-med">MEDIUM</span></div></div>
+              <div class="insight-item"><div class="insight-icon green-bg-soft">🌱</div><div><div class="insight-title">Solar window optimal</div><div class="insight-desc">Shift heavy loads to 12–2 PM solar peak</div><span class="tag tag-low">OPTIMIZE</span></div></div>
+              <div class="insight-item"><div class="insight-icon amber-bg-soft">🔧</div><div><div class="insight-title">AC unit D-Lab2 drifting</div><div class="insight-desc">23% above baseline. Maintenance needed</div><span class="tag tag-med">MAINT.</span></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════
+           ALERTS
+      ════════════════════════════ -->
+      <section class="panel" id="panel-alerts">
+        <div class="section-header">
+          <div>
+            <h2>Alerts &amp; <span>Notifications</span></h2>
+            <p class="subtitle">Real-time campus event feed</p>
+          </div>
+          <button class="btn btn-red" onclick="clearAllAlerts()">✕ Clear All</button>
+        </div>
+
+        <div class="grid-3 gap-16 mb-16">
+          <div class="card"><div class="stat-number red-text">2</div><div class="stat-label">Critical</div></div>
+          <div class="card"><div class="stat-number amber-text">2</div><div class="stat-label">Warnings</div></div>
+          <div class="card"><div class="stat-number cyan-text">3</div><div class="stat-label">Info / Success</div></div>
+        </div>
+
+        <div class="card">
+          <div id="alerts-list"></div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════
+           REPORTS
+      ════════════════════════════ -->
+      <section class="panel" id="panel-reports">
+        <div class="section-header">
+          <div>
+            <h2>Reports &amp; <span>Analytics</span></h2>
+            <p class="subtitle">Comprehensive campus performance data</p>
+          </div>
+          <div class="btn-group">
+            <select class="select-input"><option>This Month</option><option>This Week</option><option>This Year</option></select>
+            <button class="btn btn-cyan">⬇ PDF Report</button>
+          </div>
+        </div>
+
+        <div class="grid-4 gap-16 mb-16">
+          <div class="card"><div class="stat-number cyan-text">7,482 <span class="stat-unit">kWh</span></div><div class="stat-label">Total Energy</div><div class="stat-change green-text">↓ 9.2% vs last</div></div>
+          <div class="card"><div class="stat-number green-text">₹51,200</div><div class="stat-label">Total Savings</div><div class="stat-change green-text">AI optimization</div></div>
+          <div class="card"><div class="stat-number purple-text">71%</div><div class="stat-label">Utilization</div><div class="stat-change amber-text">+4% from AI</div></div>
+          <div class="card"><div class="stat-number amber-text">3.8t</div><div class="stat-label">CO₂ Avoided</div><div class="stat-change green-text">🌱 Green win</div></div>
+        </div>
+
+        <div class="grid-2 gap-16 mb-16">
+          <div class="card glow-cyan"><div class="chart-label">Monthly Energy · kWh</div><div class="chart-box"><canvas id="chart-monthly"></canvas></div></div>
+          <div class="card"><div class="chart-label">Energy by Building</div><div class="chart-box"><canvas id="chart-bldg-pie"></canvas></div></div>
+        </div>
+
+        <div class="grid-2 gap-16">
+          <div class="card">
+            <div class="chart-label">Energy Summary</div>
+            <div class="report-table">
+              <div class="report-row"><span class="report-label">Total consumption (month)</span><span class="report-value cyan-text">7,482 kWh</span></div>
+              <div class="report-row"><span class="report-label">Peak consumption day</span><span class="report-value">Tuesday (1,420 kWh)</span></div>
+              <div class="report-row"><span class="report-label">Lowest consumption day</span><span class="report-value green-text">Sunday (284 kWh)</span></div>
+              <div class="report-row"><span class="report-label">Anomalies detected</span><span class="report-value amber-text">18</span></div>
+              <div class="report-row"><span class="report-label">Auto-resolved by AI</span><span class="report-value green-text">14 of 18</span></div>
+              <div class="report-row"><span class="report-label">Avg room utilization</span><span class="report-value">71%</span></div>
+              <div class="report-row"><span class="report-label">Total bookings (month)</span><span class="report-value">486</span></div>
+              <div class="report-row"><span class="report-label">Cost per kWh saved</span><span class="report-value green-text">₹6.85</span></div>
+            </div>
+          </div>
+          <div class="card"><div class="chart-label">Room Utilization by Block (%)</div><div class="chart-box"><canvas id="chart-util"></canvas></div></div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════
+           SETTINGS
+      ════════════════════════════ -->
+      <section class="panel" id="panel-settings">
+        <div class="section-header">
+          <div>
+            <h2>System <span>Settings</span></h2>
+            <p class="subtitle">Configure SmartCampus AI preferences</p>
+          </div>
+          <button class="btn btn-green" onclick="showToast('Settings saved ✓')">✓ Save Changes</button>
+        </div>
+
+        <div class="grid-2 gap-16">
+          <div>
+            <div class="card mb-16">
+              <div class="settings-group-title">AI &amp; Automation</div>
+              <div class="setting-row"><div class="setting-info"><strong>Auto Energy Optimization</strong><span>AI auto-adjusts HVAC based on occupancy</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><strong>Smart Booking Suggestions</strong><span>Show AI room recommendations</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><strong>Anomaly Auto-Alerts</strong><span>Push alerts for energy spikes</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><strong>Night Mode Automation</strong><span>Auto-off empty rooms after 10 PM</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><strong>Predictive Maintenance</strong><span>Flag AC/equipment drift early</span></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+            </div>
+            <div class="card">
+              <div class="settings-group-title">Energy Thresholds</div>
+              <div class="setting-row"><div class="setting-info"><strong>Daily Budget</strong><span>Alert if daily usage exceeds</span></div><div class="setting-input-group"><input type="number" class="setting-input" value="420"/><span class="muted-text">kWh</span></div></div>
+              <div class="setting-row"><div class="setting-info"><strong>Spike Threshold</strong><span>Alert when spikes above baseline by</span></div><div class="setting-input-group"><input type="number" class="setting-input" value="150"/><span class="muted-text">%</span></div></div>
+              <div class="setting-row"><div class="setting-info"><strong>Empty Room Timeout</strong><span>Minutes before triggering alert</span></div><div class="setting-input-group"><input type="number" class="setting-input" value="30"/><span class="muted-text">min</span></div></div>
+            </div>
+          </div>
+          <div>
+            <div class="card mb-16">
+              <div class="settings-group-title">Alerts &amp; Reports</div>
+              <div class="setting-row"><div class="setting-info"><strong>Daily Energy Report</strong><span>Email summary every 8:00 AM</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><strong>Weekly Analytics Report</strong><span>Every Monday morning</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><strong>Critical Alert SMS</strong><span>SMS for HIGH priority anomalies</span></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><strong>Booking Confirmations</strong><span>Email on every room booking</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+            </div>
+            <div class="card">
+              <div class="settings-group-title">System Information</div>
+              <div class="report-table">
+                <div class="report-row"><span class="report-label">Platform</span><span class="report-value cyan-text">v2.4.1</span></div>
+                <div class="report-row"><span class="report-label">AI Engine</span><span class="report-value">ML-Core 3.1 (Scikit-learn)</span></div>
+                <div class="report-row"><span class="report-label">Rooms monitored</span><span class="report-value">50</span></div>
+                <div class="report-row"><span class="report-label">Data since</span><span class="report-value">January 2023</span></div>
+                <div class="report-row"><span class="report-label">Backend</span><span class="report-value">Flask 3.0 + Python 3.11</span></div>
+                <div class="report-row"><span class="report-label">Database</span><span class="report-value">MySQL 8.0</span></div>
+                <div class="report-row"><span class="report-label">Last model retrain</span><span class="report-value green-text">Today 8:00 AM</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /content -->
+  </div><!-- /main-wrap -->
+
+  <!-- BOOKING MODAL -->
+  <div class="modal-overlay" id="modal-overlay" style="display:none">
+    <div class="modal-box">
+      <h3 class="modal-title">📅 Book Classroom</h3>
+      <p class="modal-sub">AI-recommended room · Confirm details below</p>
+      <div class="form-group"><label class="form-label">Room</label><input type="text" class="form-input" id="modal-room" readonly/></div>
+      <div class="form-group"><label class="form-label">Date</label><input type="date" class="form-input" id="modal-date"/></div>
+      <div class="form-group">
+        <label class="form-label">Time Slot</label>
+        <select class="form-input" id="modal-time">
+          <option>2:00 PM – 4:00 PM</option><option>9:00 AM – 11:00 AM</option>
+          <option>11:00 AM – 1:00 PM</option><option>4:00 PM – 6:00 PM</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Faculty / Purpose</label><input type="text" class="form-input" id="modal-purpose" placeholder="e.g. Data Structures Lecture"/></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-cyan" onclick="confirmBooking()">✓ Confirm Booking</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast"></div>
+
+  <!-- JS FILES -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/rooms.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/alerts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
