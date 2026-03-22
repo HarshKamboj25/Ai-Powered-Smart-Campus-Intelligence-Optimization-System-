@@ -1,6 +1,4 @@
-/* =============================================
-   ALERTS.JS — Alert feed logic
-   ============================================= */
+/* ALERTS.JS — Alert feed logic */
 
 function renderAlerts() {
   const list = document.getElementById('alerts-list');
