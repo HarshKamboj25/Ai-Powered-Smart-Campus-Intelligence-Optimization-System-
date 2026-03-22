@@ -1,7 +1,5 @@
-/* =============================================
-   APP.JS — Main controller
-   Navigation, clock, live tickers, boot
-   ============================================= */
+/* APP.JS — Main controller
+   Navigation, clock, live tickers, boot */
 
 /* ── PANEL TITLES ── */
 const PANEL_TITLES = {
