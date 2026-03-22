@@ -1,5 +1,4 @@
-/* =============================================
-   CHARTS.JS — All Chart.js chart definitions */
+/* CHARTS.JS — All Chart.js chart definitions */
 
 const CHARTS = {};
 
