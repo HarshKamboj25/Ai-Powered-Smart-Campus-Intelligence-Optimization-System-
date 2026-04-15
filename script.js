@@ -209,7 +209,7 @@ function drawTrendChart() {
   ctx.fillText('Baseline', pad.l + 176, 14);
 }
 
-// ─── BOOKING UI ─────────────────────────────────────────────────────
+// ─── BOOKING UI ───────────────────────────────────────────────────
 function buildBookingUI() {
   // Populate room dropdown
   const sel = document.getElementById('room-select');
